@@ -1,0 +1,112 @@
+<section class="all-height" >
+  <div class="encabezado valign-wrapper hide-on-small-only">
+    <h5 class="valign blanco"><i class="material-icons ico-encabezado">chat_bubble</i> Contactos</h5>
+  </div>
+  <div class="container">
+    <div class="row pd-top all-height">
+
+      <!-- Columna del listado de CONTACTOS -->
+      <div id="contactos" class="col s11 m8 l5" style="padding-right:0;">
+        <div class="card big">
+
+          <!-- Menú del Listado de Contactos -->
+          <div class="menu grey lighten-3">
+            <div class="buscador" style="height: 60px;"></div>
+          </div>
+
+          <!-- Lista de Contactos -->
+          <ul class="collection" style="margin-top: 0px;">
+
+              <!-- item de un usuario -->
+              <li ng-click='conversarContacto()' class="collection-item waves-effect flex">
+                  <div class="left">
+                    <div class="icon-foto circle">
+                      <img src="http://localhost/wordpress01/wp-content/themes/mmmm/assets/img/avatar.jpg" alt="" class="circle">
+                    </div>
+                  </div>
+                  <div class="pd-left" style="flex: 1; line-height: 1.3;">
+                    <span class="txt bold">Ándres</span><br>
+                    <span class="grey-text txt-small">Lima, Madgalena del Mar, Perú</span><br>
+                    <span class="gris txt-small">Frase variante</span>
+                  </div>
+                  <div class="right">
+                    <span>05/12/17</span><br>
+                    <div class="notificaciones right"><span>7</span></div>
+                  </div>
+              </li>
+
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna de CHAT -->
+      <div class="col s12 m12 l7 all-height col-chat" style="padding-left:0;">
+        <div class="opacity" ng-click="ocultarContactos()"></div>
+        <div class="card big all-height bg-chat">
+          <div class="view-chat all-height">
+
+            <!-- layer (se muestra antes de elegir un contacto) -->
+            <div class="layer-chat">
+              <div class="centrar-verticalmente center">
+                <div class="circle white">
+                  <i class="material-icons fucsia centrar-verticalmente">comment</i>
+                </div>
+                <h5 class="valign"><strong>Cónoce</strong></h5>
+                <a class="mostrar-contactos btn-flat disabled hide-on-med-and-down">Seleccionar Contacto!...</a>
+                <a class="mostrar-contactos btn-flat hide-on-med-and-up	white" ng-click="mostrarContactos()">Seleccionar Contacto!...</a>
+
+              </div>
+            </div>
+
+            <!-- Sección del Chat -->
+            <div class="chat">
+
+              <!-- Menú del Chat / foto y nombre del contacto - iconos favoritos + bloquear -->
+              <div class="menu-chat card grey lighten-3">
+
+                <div class="left">
+                  <a ng-click="mostrarContactos()" class="btn-floating waves-effect waves-light black hide-on-med-and-up" style="bottom: 15px; margin-right: 6px;"><i class="material-icons">streetview</i></a>
+                  <div class="icon-foto circle">
+                    <img src="http://localhost/wordpress01/wp-content/themes/mmmm/assets/img/avatar.jpg" alt="" class="circle">
+                  </div>
+                  <p class="txt pd-left bold">Ándres</p>
+                </div>
+
+                <div class="right" style="height: 60px; display: table;">
+                  <div class="favoritos centrar-verticalmente"><a class="btn-simple"><i class="material-icons">star_border</i></a></div>
+                  <div class="bloquear centrar-verticalmente">
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-button btn-simple' data-activates='dropdown1'><i class="material-icons grey lighten-3">more_vert</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                      <li><a href="#!">Bloquear</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Cuerpo del CHAT / conversacion en vivo -->
+              <div class="body-chat">
+
+                <!-- Historial de mensajes -->
+                <div class="chat-historial">
+                  <div class="menssage">
+                    <div class="message-user">HOLA ¿Cómo estas?</div>
+                  </div>
+                  <div class="menssage">
+                    <div class="message-contacto">Super bien por fin de año</div>
+                  </div>
+                </div>
+
+                <!-- Teclado del Chat-->
+                <div class="chat-teclado">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
