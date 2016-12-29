@@ -6,30 +6,6 @@ var app = angular.module('app',["ngRoute"]);
 
 app.controller('mainController', ['$scope', '$log', '$http', '$location', function($scope, $log, $http, $location) {
 
-    $scope.conversarContacto = function () {
-      setTimeout(function () {
-          $('.layer-chat').fadeOut(1500);
-          $('.menu-chat').fadeIn(1500);        
-      },500);
-      $scope.ocultarContactos();
-    }
-
-    $scope.mostrarContactos = function () {
-      $('#contactos').addClass('mover-right-contactos');
-      $('#contactos').removeClass('mover-left-contactos');
-      $('.opacity').show();
-      $('.opacity').addClass('suave');
-    }
-
-    $scope.ocultarContactos = function () {
-      $('#contactos').addClass('mover-left-contactos');
-      $('#contactos').removeClass('mover-right-contactos');
-      $('.opacity').hide();
-      $('.opacity').addClass('desaparecer');
-      $('.opacity').removeClass('suave');
-    }
-
-
     $scope.loadJquery = function() {
         $('.dropdown-button').dropdown({
                 inDuration: 300,
@@ -42,9 +18,58 @@ app.controller('mainController', ['$scope', '$log', '$http', '$location', functi
         );
 
     };
+
+    $scope.modal = function (idModal){
+      $('.modal').modal({
+        dismissible: true,
+      });
+      $('#'+idModal).modal('open');
+    }
+
+    $scope.conversarContacto = function () {
+        setTimeout(function () {
+            $('.layer-chat').fadeOut(500);
+            $('.chat').fadeIn(500);
+        },100);
+        $scope.ocultarContactos();
+    };
+
+    $scope.mostrarContactos = function () {
+        $('#contactos').addClass('mover-right-contactos');
+        $('#contactos').removeClass('mover-left-contactos');
+        $('.opacity').show();
+        $('.opacity').addClass('suave');
+    };
+
+    $scope.ocultarContactos = function () {
+        $('#contactos').addClass('mover-left-contactos');
+        $('#contactos').removeClass('mover-right-contactos');
+        $('.opacity').hide();
+        $('.opacity').addClass('desaparecer');
+        $('.opacity').removeClass('suave');
+    };
+
+    $scope.volverFavorito = function () {
+      $('.volver-favorito').addClass('hide');
+      $('.quitar-favorito').removeClass('hide');
+    };
+
+    $scope.quitarFavorito = function () {
+      $('.volver-favorito').removeClass('hide');
+      $('.quitar-favorito').addClass('hide');
+    };
+
+
+
 }]);
 
 app.controller('chatController', ['$scope', '$log', '$http', '$location', function($scope, $log, $http, $location) {
+    setTimeout(function(){
+        $scope.loadJquery();
+    }, 0);
+}]);
+
+app.controller('enLineaController', ['$scope', '$log', '$http', '$location', function($scope, $log, $http, $location) {
     setTimeout(function(){
         $scope.loadJquery();
     }, 0);
@@ -58,7 +83,8 @@ app.config(function($routeProvider) {
 			controller  : "mainController"
 		})
 		.when("/enlinea", {
-			templateUrl : "http://localhost/wordpress01/wp-content/themes/mmmm/enlinea/enlinea.html"
+			templateUrl : "http://localhost/wordpress01/wp-content/themes/mmmm/enlinea/enlinea.html",
+      controller  : "enLineaController"
 		})
 		.when("/recomendados", {
 			templateUrl : "http://localhost/wordpress01/wp-content/themes/mmmm/recomendados/recomendados.html"
@@ -71,7 +97,7 @@ app.config(function($routeProvider) {
 		})
 		.when("/chat", {
 			templateUrl : "http://localhost/wordpress01/wp-content/themes/mmmm/chat/chat.html",
-            controller  : "chatController"
+      controller  : "chatController"
 		})
 		.when("/invitaciones", {
 			templateUrl : "http://localhost/wordpress01/wp-content/themes/mmmm/invitaciones/invitaciones.html"
